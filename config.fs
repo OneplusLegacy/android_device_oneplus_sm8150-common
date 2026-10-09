@@ -22,6 +22,32 @@ value:2907
 [AID_VENDOR_FASTRPC]
 value:2908
 
+# guacamole_efsd (device/oneplus/guacamole/efs_probe - Cycle 2 Section
+# F/J, 2026-09-24 W1 Finalization Round). A dedicated, non-root AID for
+# this device's persistent EFS2/PDC carrier-config daemon - registered
+# here via the SAME real, build-verified mechanism (config.fs ->
+# TARGET_FS_CONFIG_GEN -> fs_config_generator.py) already used by every
+# other AID in this file, e.g. AID_VENDOR_QTI_DIAG above (which this
+# project's own real-device runs already confirmed resolves correctly
+# for the `vendor_qti_diag` group). Never an invented/guessed numeric
+# value - 2909 is simply the next unused id in this file's existing
+# sequential AID_OEM_RESERVED (2900-2999) block.
+#
+# NAMING FIXED 2026-09-25 (real build error from
+# build/make/tools/fs_config/fs_config_generator.py): every AID whose
+# value falls in the AID_OEM_RESERVED (2900-2999) range MUST have a
+# friendly name (the AID_ prefix stripped, lowercased) starting with
+# "vendor" - the generator maps the OEM_RESERVED range to the "vendor"
+# partition and rejects any AID in that range without that prefix
+# ("AID "guacamole_efsd" must be prefixed with a partition name").
+# Renamed from AID_GUACAMOLE_EFSD to AID_VENDOR_GUACAMOLE_EFSD to match
+# every other AID already in this file - the runtime user/group name
+# becomes "vendor_guacamole_efsd", not "guacamole_efsd". Every
+# user/group reference in init/guacamole_efsd.rc and
+# sepolicy/vendor/guacamole_efsd.te must use this same real name.
+[AID_VENDOR_GUACAMOLE_EFSD]
+value:2909
+
 [AID_VENDOR_LAUNCHER]
 value:2988
 
