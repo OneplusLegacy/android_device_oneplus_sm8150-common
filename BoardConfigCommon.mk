@@ -96,9 +96,20 @@ TARGET_BOARD_PLATFORM := msmnile
 BOARD_USES_METADATA_PARTITION := true
 
 # Partitions
+BOARD_EROFS_COMPRESSOR := lz4
+BOARD_EROFS_PCLUSTER_SIZE := 262144
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
-BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
+# 2026-09-26: vendor deliberately kept ext4, NOT erofs. Empirically
+# confirmed (user's own prior testing) that opening the DIAG port for
+# VoLTE patch work fails when vendor is erofs - erofs has no write path
+# in the kernel driver at all (unlike ext4, which can be remounted rw
+# even when normally mounted ro), so any workflow that remounts vendor
+# rw to edit IMS/QCRIL config files in place cannot work on erofs. Only
+# system (where the actual space shortage was, from GMS packages under
+# system/product and system/priv-app - never vendor) is erofs.
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_USERIMAGES_SPARSE_EROFS_DISABLED := true
 TARGET_COPY_OUT_VENDOR := vendor
 
 # Recovery
