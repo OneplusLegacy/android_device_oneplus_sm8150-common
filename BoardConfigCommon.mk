@@ -54,7 +54,7 @@ TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 
 # HIDL
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
-    hardware/oplus/vintf/device_framework_matrix.xml \
+    hardware/oplus-guacamole/vintf/device_framework_matrix.xml \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
@@ -131,7 +131,7 @@ VENDOR_SECURITY_PATCH := 2022-12-05
 # SEPolicy
 include device/lineage/sepolicy/libion/sepolicy.mk
 include device/qcom/sepolicy_vndr/SEPolicy.mk
-include hardware/oplus/sepolicy/qti/SEPolicy.mk
+include hardware/oplus-guacamole/sepolicy/qti/SEPolicy.mk
 include $(COMMON_PATH)/sepolicy/SEPolicy.mk
 
 # Verified Boot

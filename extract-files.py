@@ -19,7 +19,7 @@ from extract_utils.main import (
 
 namespace_imports = [
     'device/oneplus/sm8150-common',
-    'hardware/oplus',
+    'hardware/oplus-guacamole',
     'hardware/qcom-caf/sm8150',
     'hardware/qcom-caf/wlan',
     'vendor/qcom/opensource/commonsys-intf/display',

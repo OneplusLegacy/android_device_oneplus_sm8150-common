@@ -4,8 +4,8 @@
     "target_path": "hardware/oneplus"
   },
   {
-    "repository": "android_hardware_oplus",
-    "target_path": "hardware/oplus"
+    "repository": "android_hardware_oplus-guacamole",
+    "target_path": "hardware/oplus-guacamole"
   },
   {
     "repository": "android_kernel_oneplus_sm8150",
