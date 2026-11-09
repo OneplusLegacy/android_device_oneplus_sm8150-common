@@ -150,7 +150,18 @@ on post-fs-data
     mkdir /data/vendor/qtee 0770 system system
 
     #Create folder of camera
-    mkdir /data/vendor/camera 0770 camera camera
+    # 0777 with camera:camera matches stock OxygenOS: the camera app runs under
+    # its own app uid and writes the watermark output to
+    # /data/vendor/camera/watermark, so a 0770 mode would deny it at the
+    # DAC layer. The SELinux label is vendor_camera_data_file from the Qualcomm
+    # vendor file_contexts, and init's post-fs-data "restorecon --recursive
+    # --skip-ce /data" applies it.
+    mkdir /data/vendor/camera 0777 camera camera
+
+    #Create folder of slogan
+    mkdir /data/vendor/camera/slogan 0777 system system
+    # Migrate existing APS/watermark data from the port's former custom label.
+    restorecon_recursive /data/vendor/camera
 
     #Create directory for tftp
     mkdir /data/vendor/tombstones 0771 system system
